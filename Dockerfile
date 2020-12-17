@@ -22,4 +22,4 @@ RUN apt-get update && apt-get install -y \
   unzip vault_${VAULT_VERSION}_linux_amd64.zip -d /bin &&\
   wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip  &&\
   unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin &&\
-  rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip && rm -f vault_${VAULT_VERSION}_linux_amd64.zip 
+  rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip && rm -f vault_${VAULT_VERSION}_linux_amd64.zip && ls
