@@ -5,6 +5,8 @@ ENV VAULT_VERSION=1.6.0
 
 ENV TERRAFORM_VERSION=0.14.2
 
+ENV TFSEC_VERSION=0.36.10
+
 WORKDIR /
 
 RUN apt-get update && apt-get install -y \
@@ -22,4 +24,5 @@ RUN apt-get update && apt-get install -y \
   unzip vault_${VAULT_VERSION}_linux_amd64.zip -d /bin &&\
   wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip  &&\
   unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin &&\
-  rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip && rm -f vault_${VAULT_VERSION}_linux_amd64.zip && ls
+  rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip && rm -f vault_${VAULT_VERSION}_linux_amd64.zip &&\
+  wget https://github.com/tfsec/tfsec/releases/download/v${TFSEC_VERSION}/tfsec-linux-amd64  -O /bin/tfsec 
