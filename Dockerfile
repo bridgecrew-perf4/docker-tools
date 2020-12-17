@@ -19,6 +19,6 @@ RUN apt-get update && apt-get install -y \
   ansible-lint \
   && rm -rf /var/lib/apt/lists/* &&\
   wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip  &&\
-  unzip vault_${VAULT_VERSION}_linux_amd64.zip -d / &&\
+  unzip vault_${VAULT_VERSION}_linux_amd64.zip -d /bin &&\
   wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip  &&\
-  unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /
+  unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin
