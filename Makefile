@@ -28,6 +28,5 @@ ansible:  ## ansible
 terraform:  ## ansible
 	docker run --rm ${USERNAME}/${IMAGE} terraform --version
 
-
 vault:  ## vault
 	docker run --rm ${USERNAME}/${IMAGE} vault --version
