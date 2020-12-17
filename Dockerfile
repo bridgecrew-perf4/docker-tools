@@ -16,9 +16,9 @@ RUN apt-get update && apt-get install -y \
   ansible \
   docker \
   yamllint \
-  ansible-lint
-# && rm -rf /var/lib/apt/lists/* &&\
-# wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip  &&\
-# unzip vault_${VAULT_VERSION}_linux_amd64.zip -d / &&\
-# wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip  &&\
-# unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /
+  ansible-lint \
+  && rm -rf /var/lib/apt/lists/* &&\
+  wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip  &&\
+  unzip vault_${VAULT_VERSION}_linux_amd64.zip -d / &&\
+  wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip  &&\
+  unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /
