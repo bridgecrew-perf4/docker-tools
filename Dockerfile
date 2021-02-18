@@ -14,6 +14,7 @@ WORKDIR /
 RUN apt-get update && apt-get install -y \
   wget \
   unzip \
+  git \
   curl \
   python3-pip &&\
   pip3 install molecule \
