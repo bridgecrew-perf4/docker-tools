@@ -13,8 +13,11 @@ BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 all:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-build:  ## Build docker image!
+docker_build:  ## Build docker image!
 	docker build -t ${USERNAME}/${IMAGE} .
+
+docker_push:  ## Push docker image into Dockerhub!
+	docker push ${USERNAME}/${IMAGE}
 
 push:  ## push
 	git add . && git commit -m "`date`" && git push origin $${BRANCH} || true
