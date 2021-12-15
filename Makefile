@@ -33,3 +33,12 @@ terraform:  ## ansible
 
 vault:  ## vault
 	docker run --rm ${USERNAME}/${IMAGE} vault --version
+
+tflint:  ## tflint
+	docker run --rm ${USERNAME}/${IMAGE} tflint --version
+
+tfsec:	## tfsec
+	docker run --rm ${USERNAME}/${IMAGE} tfsec --version
+
+run:
+	docker run -it  ${USERNAME}/${IMAGE} 
