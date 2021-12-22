@@ -14,7 +14,7 @@ all:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 docker_build:  ## Build docker image!
-	DOCKER_BUILDKIT=1 docker build --squash -t ${USERNAME}/${IMAGE} .
+	DOCKER_BUILDKIT=1 docker build --squash --no-cache -t ${USERNAME}/${IMAGE} .
 
 docker_push:  ## Push docker image into Dockerhub!
 	docker push ${USERNAME}/${IMAGE}

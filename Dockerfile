@@ -1,15 +1,15 @@
 
 FROM debian:stable-slim
 
-ARG VAULT_VERSION="1.9.2"
-ARG TERRAFORM_VERSION="1.1.1"
-ARG TFSEC_VERSION="0.63.1"
-ARG ANSIBLE_VERSION="4.8.0"
-ARG MOLECULE_VERSION="3.5.2"
-ARG TFLINT_VERSION="0.33.2"
-ARG CREDENTIALS_HELPER_VERSION="1.0.0"
-ARG AWS_CLI_VERSION="2.0.30"
-ARG TRIVY_VERSION="0.21.2"
+ARG VAULT_VERSION=1.9.2
+ARG TERRAFORM_VERSION=1.1.1
+ARG TFSEC_VERSION=0.63.1
+ARG ANSIBLE_VERSION=4.8.0
+ARG MOLECULE_VERSION=3.5.2
+ARG TFLINT_VERSION=0.33.2
+ARG CREDENTIALS_HELPER_VERSION=1.0.0
+ARG AWS_CLI_VERSION=2.0.30
+ARG TRIVY_VERSION=0.21.2
 
 LABEL vault_version=${VAULT_VERSION}
 LABEL terraform_version=${TERRAFORM_VERSION}
@@ -29,14 +29,22 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   git \
   curl \
   docker.io \
-  python3-pip &&\
-  pip3 install --no-cache-dir ansible==${ANSIBLE_VERSION} \
+  python3-pip
+
+
+RUN  pip3 install  ansible==${ANSIBLE_VERSION} \
   molecule[docker,lint] \
   pytest-testinfra \
   yamllint \
   ansible-lint \
   checkov \
-  && wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip  &&\
+  && pip cache purge
+
+
+
+
+
+RUN wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip  &&\
   unzip vault_${VAULT_VERSION}_linux_amd64.zip -d /bin &&\
   wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip  &&\
   unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin &&\
@@ -48,7 +56,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   wget https://github.com/apparentlymart/terraform-credentials-env/releases/download/v${CREDENTIALS_HELPER_VERSION}/terraform-credentials-env_${CREDENTIALS_HELPER_VERSION}_linux_amd64.zip -O ~/.terraform.d/plugins/terraform-credentials-env_${CREDENTIALS_HELPER_VERSION}_linux_amd64.zip &&\
   unzip ~/.terraform.d/plugins/terraform-credentials-env_${CREDENTIALS_HELPER_VERSION}_linux_amd64.zip  -d ~/.terraform.d/plugins &&\
   mv ~/.terraform.d/plugins/terraform-credentials-env_v${CREDENTIALS_HELPER_VERSION}_x4 ~/.terraform.d/plugins/terraform-credentials-env &&\
-  curl -s https://awscli.amazonaws.com/awscli-exe-linux-x86_64-${AWS_CLI_VERSION}.zip -o awscliv2.zip &&\
+  curl -s https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip &&\
   unzip awscliv2.zip && ./aws/install &&\
   ln -s /usr/local/bin/aws /bin/aws &&\
   mkdir -p /opt/trivy/ &&\
@@ -62,8 +70,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   rm -rf /opt/trivy/
 
 
-
 COPY terraformrc /root/.terraformrc
-
 
 CMD    ["/bin/bash"]
