@@ -1,1 +1,19 @@
 https://hub.docker.com/repository/docker/p0bailey/docker-tools
+
+ VAULT_VERSION="1.9.2"
+
+ TERRAFORM_VERSION="1.1.1"
+
+ TFSEC_VERSION="0.63.1"
+
+ ANSIBLE_VERSION="4.8.0"
+
+ MOLECULE_VERSION="3.5.2"
+
+ TFLINT_VERSION="0.33.2"
+
+ CREDENTIALS_HELPER_VERSION="1.0.0"
+
+ AWS_CLI_VERSION="2.0.30"
+
+ TRIVY_VERSION="0.21.2"
