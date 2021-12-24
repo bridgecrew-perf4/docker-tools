@@ -29,8 +29,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   git \
   curl \
   docker.io \
-  python3-pip
-
+  python3-pip \
+  make
 
 RUN  pip3 install  ansible==${ANSIBLE_VERSION} \
   molecule[docker,lint] \
@@ -39,10 +39,6 @@ RUN  pip3 install  ansible==${ANSIBLE_VERSION} \
   ansible-lint \
   checkov \
   && pip cache purge
-
-
-
-
 
 RUN wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip  &&\
   unzip vault_${VAULT_VERSION}_linux_amd64.zip -d /bin &&\

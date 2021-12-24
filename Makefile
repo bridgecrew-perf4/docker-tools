@@ -42,3 +42,9 @@ tfsec:	## tfsec
 
 run:
 	docker run -it  ${USERNAME}/${IMAGE}
+
+pr:  ## Create PR
+	gh pr create
+
+open:
+	gh browse
