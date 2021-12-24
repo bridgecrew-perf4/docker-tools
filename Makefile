@@ -19,10 +19,10 @@ docker_push:  ## Push docker image into Dockerhub!
 	docker push ${USERNAME}/${IMAGE}
 
 push:  ## push
-	git add . && git commit -m "`date`" && git push origin $${BRANCH} || true
+	git add . && git commit -m "`date`" && git push origin ${BRANCH} || true
 
 pull:  ## pull
-	git pull origin $${BRANCH}
+	git pull origin ${BRANCH}
 
 ansible:  ## ansible
 	docker run --rm ${USERNAME}/${IMAGE} ansible --version
