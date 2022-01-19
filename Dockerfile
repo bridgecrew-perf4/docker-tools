@@ -4,8 +4,9 @@ FROM debian:stable-slim
 ARG VAULT_VERSION=1.9.2
 ARG TERRAFORM_VERSION=1.1.1
 ARG TFSEC_VERSION=0.63.1
-ARG ANSIBLE_VERSION=4.8.0
-ARG MOLECULE_VERSION=3.5.2
+ARG ANSIBLE_VERSION=2.10.7
+ARG MOLECULE_VERSION=3.4.0
+ARG MOLECULE_DOCKER=1.0.2
 ARG TFLINT_VERSION=0.33.2
 ARG CREDENTIALS_HELPER_VERSION=1.0.0
 ARG AWS_CLI_VERSION=2.0.30
@@ -32,8 +33,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   python3-pip \
   make
 
+
+
+
 RUN  pip3 install  ansible==${ANSIBLE_VERSION} \
-  molecule[docker,lint] \
+  molecule==${MOLECULE_VERSION} \
+  molecule-docker==${MOLECULE_DOCKER} \
   pytest-testinfra \
   yamllint \
   ansible-lint \
