@@ -1,1 +1,4 @@
 configuration-as-code:latest
+credentials:latest
+matrix-auth:latest
+matrix-project:latest

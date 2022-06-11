@@ -18,26 +18,18 @@ docker_build:  ## Build docker image!
 docker_push:  ## Push docker image into Dockerhub!
 	docker push ${USERNAME}/${IMAGE}
 
+docker_up:  ## Start the dodcker image with docker-compose
+	docker-compose up -d
+
+docker_down:  ## Start the dodcker image with docker-compose
+	docker-compose down
+
+
 push:  ## push
 	git add . && git commit -m "`date`" && git push origin ${BRANCH} || true
 
 pull:  ## pull
 	git pull origin ${BRANCH}
-
-ansible:  ## ansible
-	docker run --rm ${USERNAME}/${IMAGE} ansible --version
-
-terraform:  ## ansible
-	docker run --rm ${USERNAME}/${IMAGE} terraform --version
-
-vault:  ## vault
-	docker run --rm ${USERNAME}/${IMAGE} vault --version
-
-tflint:  ## tflint
-	docker run --rm ${USERNAME}/${IMAGE} tflint --version
-
-tfsec:	## tfsec
-	docker run --rm ${USERNAME}/${IMAGE} tfsec --version
 
 run:
 	docker run -it  ${USERNAME}/${IMAGE}
