@@ -5,7 +5,7 @@ SHELL := '/bin/bash'
 
 USERNAME=p0bailey
 
-IMAGE=docker-tools
+IMAGE=docker-jenkins
 
 BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 

@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  web:
+    image: jenkins/jenkins:lts
+    ports:
+     - "5000:5000"
+     - "8080:8080"
+    volumes:
+     - ${PWD}/jenkins:/var/jenkins_home

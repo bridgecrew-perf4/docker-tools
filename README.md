@@ -1,19 +1,61 @@
-https://hub.docker.com/repository/docker/p0bailey/docker-tools
+# Docker Jenkins
 
- VAULT_VERSION="1.9.2"
+This compose file allows to bootstrap an instance of the latest
+Jenkins [Docker image](https://hub.docker.com/_/jenkins/) mounting a persistent data storage within the working directory of the host machine.
 
- TERRAFORM_VERSION="1.1.1"
+```
 
- TFSEC_VERSION="0.63.1"
+/var/jenkins_home is mounted under ${PWD}/jenkins
 
- ANSIBLE_VERSION="4.8.0"
+```
 
- MOLECULE_VERSION="3.5.2"
+## Installation
 
- TFLINT_VERSION="0.33.2"
+docker-compose up -d
 
- CREDENTIALS_HELPER_VERSION="1.0.0"
+### Requirements
 
- AWS_CLI_VERSION="2.0.30"
+Docker Version >= 1.12.2
 
- TRIVY_VERSION="0.21.2"
+### Setup
+
+git clone git@github.com:p0bailey/docker-jenkins.git
+
+## Usage
+
+```
+docker-compose up -d
+```
+
+Grab Jenkins initial admin password.
+```
+cat jenkins/secrets/initialAdminPassword
+```
+
+Point the browser to:
+
+```
+127.0.0.1:8080
+```
+
+Go and set up Jenkins.
+
+## Contributing
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
+
+## History
+
+16 Oct 2016 - 1.0
+
+## Author
+
+Phillip Bailey - <phillip@bailey.st>
+
+## License
+
+MIT License
