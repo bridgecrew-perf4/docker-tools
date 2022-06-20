@@ -7,16 +7,18 @@ USERNAME=p0bailey
 
 IMAGE=docker-jenkins
 
+TAG=alpine
+
 BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 
 all:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 docker_build:  ## Build docker image!
-	DOCKER_BUILDKIT=1 docker build --squash --no-cache -t ${USERNAME}/${IMAGE} .
+	DOCKER_BUILDKIT=1 docker build --squash --no-cache -t ${USERNAME}/${IMAGE}:${TAG} .
 
 docker_push:  ## Push docker image into Dockerhub!
-	docker push ${USERNAME}/${IMAGE}
+	docker push ${USERNAME}/${IMAGE}:${TAG}
 
 docker_up:  ## Start the dodcker image with docker-compose
 	docker-compose up -d

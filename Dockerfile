@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.354-alpine
+FROM jenkins/jenkins:alpine
 
 ARG jenkins_admin_user
 ARG jenkins_admin_password
